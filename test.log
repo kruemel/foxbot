@@ -1,0 +1,103 @@
+INFO:root:boardgame id      : 192458
+INFO:root:boardgame name    : 51st State: Master Set
+INFO:root:boardgame rank    : 262
+INFO:root:alternative name  : 51. Stan: Master Set
+INFO:root:alternative name  : 51st State: Das Master-Set
+INFO:root:alternative name  : 51st State: Set Completo
+INFO:root:year published    : 2016
+INFO:root:minimum players   : 1
+INFO:root:maximum players   : 4
+INFO:root:playing time      : 90
+INFO:root:minimum age       : 14
+INFO:root:thumbnail         : https://cf.geekdo-images.com/images/pic2945432_t.jpg
+INFO:root:image             : https://cf.geekdo-images.com/images/pic2945432.jpg
+INFO:root:is expansion      : False
+INFO:root:expansions
+INFO:root:- 51st State: Master Set pre-order promos
+INFO:root:- 51st State: Master Set – Arena Promo
+INFO:root:- 51st State: Master Set – Cities
+INFO:root:- 51st State: Master Set – FLGS Promo
+INFO:root:- 51st State: Master Set – Promo Set 1
+INFO:root:- 51st State: Master Set – Scavengers
+INFO:root:- 51st State: Master Set – Texas and Hegemony Factions
+INFO:root:- Brettspiel Adventskalender 2017
+INFO:root:categories
+INFO:root:- Card Game
+INFO:root:- City Building
+INFO:root:- Economic
+INFO:root:- Science Fiction
+INFO:root:families
+INFO:root:- 51st State
+INFO:root:- Neuroshima
+INFO:root:- Post-Apocalyptic
+INFO:root:- Tableau Building
+INFO:root:mechanics
+INFO:root:- Card Drafting
+INFO:root:- Hand Management
+INFO:root:- Variable Phase Order
+INFO:root:- Worker Placement
+INFO:root:implementations
+INFO:root:- 51st State
+INFO:root:designers
+INFO:root:- Ignacy Trzewiczek
+INFO:root:artistis
+INFO:root:- Grzegorz Bobrowski
+INFO:root:publishers
+INFO:root:- Edge Entertainment
+INFO:root:- Portal Games
+INFO:root:poll: player number results
+INFO:root:> 1 players: votes: 4 for best, 23 for recommended, 9 for not recommended
+INFO:root:> 2 players: votes: 31 for best, 17 for recommended, 2 for not recommended
+INFO:root:> 4+ players: votes: 0 for best, 0 for recommended, 21 for not recommended
+INFO:root:> 3 players: votes: 13 for best, 23 for recommended, 4 for not recommended
+INFO:root:> 4 players: votes: 2 for best, 19 for recommended, 15 for not recommended
+INFO:root:--------
+INFO:root:poll: player age results
+INFO:root:> 6 years: votes: 0
+INFO:root:> 3 years: votes: 0
+INFO:root:> 5 years: votes: 0
+INFO:root:> 2 years: votes: 0
+INFO:root:> 14 years: votes: 1
+INFO:root:> 12 years: votes: 5
+INFO:root:> 8 years: votes: 0
+INFO:root:> 16 years: votes: 1
+INFO:root:> 21 and up years: votes: 0
+INFO:root:> 18 years: votes: 0
+INFO:root:> 10 years: votes: 0
+INFO:root:> 4 years: votes: 0
+INFO:root:--------
+INFO:root:poll: language dependence results
+INFO:root:> No necessary in-game text (level 1): votes: 0
+INFO:root:> Some necessary text - easily memorized or small crib sheet (level 2): votes: 2
+INFO:root:> Moderate in-game text - needs crib sheet or paste ups (level 3): votes: 2
+INFO:root:> Extensive use of text - massive conversion needed to be playable (level 4): votes: 1
+INFO:root:> Unplayable in another language (level 5): votes: 1
+INFO:root:--------
+INFO:root:users rated game  : 2511
+INFO:root:users avg rating  : 7.83613
+INFO:root:users b-avg rating: 7.10484
+INFO:root:users commented   : None
+INFO:root:users owned       : 4325
+INFO:root:users wanting     : None
+INFO:root:users wishing     : None
+INFO:root:users trading     : 84
+INFO:root:ranks             : [BoardGameRank(id: 1, name: Board Game Rank, value: 262), BoardGameRank(id: 5496, name: Thematic Rank, value: 48), BoardGameRank(id: 5497, name: Strategy Game Rank, value: 143)]
+INFO:root:description       : The world you know no longer exists. There is no government. No army. No civilization. The United States has collapsed, and now thirty years after the war started, new powers finally try to take control over the ruined country, try to establish a new order, try to control others and create a new country, a new state: the 51st State.
+
+51st State is a card game in which players control one of four powers trying to build a new country. Players put new locations into play, hire leaders, and send people to work in buildings to gain resources and new skills. To do this, every card in 51st State can be used in three different ways:
+
+
+    Raze a location to gain many resources once.
+    Deal with this location to gain one resource every turn.
+    Build the location so that you can use its skill each turn.
+
+
+51st State: Master Set marks the rebirth of the 51st State line, with this set containing 88 cards from the original base game, and 50 cards each from both the New Era and Winter expansions; one of these expansions can be mixed with the cards of the base game, but not both at the same time. The entire set has been rebalanced to offer a cohesive experience no matter which expansion you choose to use.
+
+
+DEBUG:parso.python.diff:diff parser start
+DEBUG:parso.python.diff:diff parser calculated
+DEBUG:parso.python.diff:diff: line_lengths old: 1, new: 1
+DEBUG:parso.python.diff:diff replace old[1:1] new[1:1]
+DEBUG:parso.python.diff:parse_part from 1 to 1 (to 0 in part parser)
+DEBUG:parso.python.diff:diff parser end

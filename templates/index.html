@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BGG Gamepicker</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/bars-movie.css') }}">
+    <link href="{{ url_for('static', filename='js/jquery.bootstrap-touchspin.css') }}" rel="stylesheet" type="text/css" media="all">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+    <!-- <script src="{{ url_for('static', filename='js/form.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/jquery.bootstrap-touchspin.js') }}"></script>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+        <br><br><br>
+        <div class="form-group">
+            <label for="playnum">How many players are in your group?</label>
+            <input id="playnum" type="text" value="4" name ="playnum">
+            <script>
+                $("input[name='playnum']").TouchSpin({
+                    min: 2,
+                    max: 7,
+                    boostat: 4,
+                    verticalbuttons: true,
+                    verticalupclass: 'fas fa-angle-up fa-lg',
+                    verticaldownclass: 'fas fa-angle-down fa-lg',
+                    postfix: 'players'
+                });
+            </script>
+        </div>
+        <br><br>
+      </div>
+    </div>
+</div>
+<div class="container-fluid"><p></p></div>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+        <br><br>
+        <div class="form-group">
+            <label for="playtime">How much time do you want to spend playing the game?</label>
+            <input id="playtime" type="text" value="30" name="playtime">
+            <script>
+                $("input[name='playtime']").TouchSpin({
+                    min: 10,
+                    max: 600,
+                    step: 5, 
+                    boostat: 20,
+                    maxboostedstep: 50,
+                    verticalbuttons: true,
+                    verticalupclass: 'fas fa-angle-up fa-lg',
+                    verticaldownclass: 'fas fa-angle-down fa-lg',
+                    postfix: 'minutes'
+                });
+            </script>
+        <br><br>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="container-fluid"><p></p></div>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4">
+        <br><br>
+        <div class="form-group">
+            <div class="box-header">How complex should the game be?</div>
+            <br>
+              <select id="weight" name="rating" autocomplete="off">
+                <option value="Light">Light</option>
+                <option value="Medium Light">Medium Light</option>
+                <option value="Medium" selected="selected">Medium</option>
+                <option value="Medium Heavy">Medium Heavy</option>
+                <option value="Heavy">Heavy</option>
+              </select>
+            <script src="{{ url_for('static', filename='js/jquery.barrating.js') }}"></script>
+            <script type="text/javascript">
+            $(function() {
+                $('#weight').barrating({
+                    theme: 'bars-movie'
+                });
+            });
+            </script>
+        <br><br>
+        </div>
+      </div>
+    </div>
+</div>
+</html>
