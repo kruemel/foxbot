@@ -57,3 +57,28 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .form-check-label {
+    display: block;
+    width: 8.5em;
+  }
+
+  .form-check {
+    margin-left: 20px;
+  }
+
+  .btn.btn-primary {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: #6F1F7E;
+    border-color: #6F1F7E;
+  }
+
+  /* .container {
+    background: yellow;
+  }
+
+  .col-lg-4 {
+    background: orangered;
+  } */

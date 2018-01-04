@@ -17,3 +17,6 @@ i.execute(name='Marco Polo', max_player=30, best_playnum=[3, 4, 5])
 i.execute({'name': 'John', 'max_player': 42},
           {'name': 'Susan', 'max_player': 57},
           {'name': 'Carl', 'max_player': 33})
+
+# find stuff in array:
+# game = Game.query.filter(5 == Game.best_playnum.any_()).first()

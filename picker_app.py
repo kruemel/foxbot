@@ -1,9 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import ARRAY
 from flask_wtf import Form 
-from wtforms import StringField, IntegerField 
-from wtforms.validators import InputRequired, Email, Length, AnyOf
 
 app = Flask(__name__)
 
@@ -42,10 +40,22 @@ class GameQuery(db.Model):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-	# form = LoginForm()
-	# if form.validate_on_submit():
-		# return 'Form Successfully Submitted!'
     return render_template('index.html')
+
+@app.route('/process', methods=['GET', 'POST'])
+def process():
+    playnum = request.form['playnum']
+    playtime = request.form['playtime']
+    weight = request.form['rating']
+    mechanics = request.form.getlist('mechCheck')
+    if playnum:
+        return redirect(url_for('showgames', playnum=playnum, 
+        playtime=playtime, weight=weight, mech=mechanics))
+
+@app.route('/foundgames/<playnum>/<playtime>/<weight>/<mech>')
+def showgames(playnum, playtime, weight, mech):
+    return('Playnum: {}<br><br>Playtime: {} <br><br>Weight: {}'
+           '<br><br>Mechanics: {}').format(playnum, playtime, weight, mech)
 
 # @app.route('/processuser', methods=['POST'])
 # def process():
