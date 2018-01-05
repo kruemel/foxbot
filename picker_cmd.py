@@ -11,7 +11,7 @@ MIN_VOTES = 20
 def suggest_playernum(votes_dict):
     """ function to determine, if the game is really playable with the given
         number of players """
-    total_votes = int(next(iter(votes_dict.values())))
+    total_votes = votes_dict['total_votes']
     max_players = len(votes_dict["results"].items())
     if total_votes < MIN_VOTES:
         result = [list(range(1, max_players)), list(range(1, max_players))]

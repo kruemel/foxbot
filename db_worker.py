@@ -39,18 +39,20 @@ def _suggest_playernum(votes_dict):
     BAD_THRESH = 0.2
     MIN_VOTES = 20
 
-    total_votes = int(next(iter(votes_dict.values())))
-    max_players = len(votes_dict["results"].items())
+    total_votes = int(votes_dict['total_votes'])
+    max_players = len(votes_dict['results'].items()) - 1
     if total_votes < MIN_VOTES:
-        result = [list(range(1, max_players)), list(range(1, max_players))]
+        result = [list(range(1, max_players)), []]
         return result
-    best = []
-    not_recommended = []
-    for val in votes_dict['results'].values():
-        best.append(val['best']/total_votes)
-        not_recommended.append(val['not_recommended']/total_votes)
-    good_num = [i for i, x in enumerate(best, 1) if x > GOOD_THRESH]
-    bad_num = [i for i, x in enumerate(not_recommended, 1) if x > BAD_THRESH]
+    good_num = []
+    bad_num = []
+    for num, key in enumerate(votes_dict['results'], 1):
+        if key[-1:] == '+':
+            continue
+        if int(votes_dict['results'][key]['not_recommended'])/total_votes > 0.2:
+            bad_num.append(int(key))
+        if int(votes_dict['results'][key]['best'])/total_votes > 0.2:
+            good_num.append(int(key))
     return [good_num, bad_num]
 
 def db_update(db, game_list, collection):
@@ -61,6 +63,6 @@ def db_update(db, game_list, collection):
                     maxplayers=g.max_players, minplayers=g.min_players, max_playing_time=g.max_playing_time,
                     min_playing_time=g.min_playing_time, best_playnum=numfit[0], not_recom_playnum=numfit[1],
                     description=g.description, imageurl=g.image, mechanics=g.mechanics,
-                    average_weight=g.rating_average_weight)
+                    average_weight=g.rating_average_weight, bgg_rank=g.stats['ranks'][0]['value'])
         db.session.add(game)
         db.session.commit()

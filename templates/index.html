@@ -8,8 +8,7 @@
   
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-  <link rel="stylesheet" href="{{ url_for('static', filename='js/bars-movie.css') }}">
-  <link href="{{ url_for('static', filename='js/jquery.bootstrap-touchspin.css') }}" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ url_for('static', filename='js/index.css') }}" rel="stylesheet" type="text/css" media="all">
   <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
@@ -75,11 +74,11 @@
         <div class="box-header">How complex should the game be?</div>
         <br>
           <select id="weight" name="rating" autocomplete="off">
-            <option value="Light">Light</option>
-            <option value="Medium Light">Medium Light</option>
-            <option value="Medium" selected="selected">Medium</option>
-            <option value="Medium Heavy">Medium Heavy</option>
-            <option value="Heavy">Heavy</option>
+            <option value="1">Light</option>
+            <option value="2">Medium Light</option>
+            <option value="3" selected="selected">Medium</option>
+            <option value="4">Medium Heavy</option>
+            <option value="5">Heavy</option>
           </select>
         <script src="{{ url_for('static', filename='js/jquery.barrating.js') }}"></script>
         <script type="text/javascript">

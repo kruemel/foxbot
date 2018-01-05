@@ -7,6 +7,64 @@
  *  Under Apache License v2.0 License
  */
 
+.br-theme-bars-movie .br-widget {
+    display: block;
+    height: 10px;
+    white-space: nowrap;
+    margin-left: auto;
+    margin-right: auto;
+    width: 18em;
+  }
+  .br-theme-bars-movie .br-widget a {
+    display: block;
+    width: 52px;
+    height: 8px;
+    float: left;
+    background-color: rgb(228, 190, 235);
+    margin: 1px;
+  }
+  .br-theme-bars-movie .br-widget a.br-active,
+  .br-theme-bars-movie .br-widget a.br-selected {
+    background-color: #6F1F7E;
+  }
+  .br-theme-bars-movie .br-widget .br-current-rating {
+    clear: both;
+    width: 260px;
+    text-align: center;
+    font-weight: 600;
+    display: block;
+    padding: .5em 0;
+    color: #6F1F7E;
+    font-weight: 400;
+  }
+  .br-theme-bars-movie .br-readonly a {
+    cursor: default;
+  }
+  .br-theme-bars-movie .br-readonly a.br-active,
+  .br-theme-bars-movie .br-readonly a.br-selected {
+    background-color: #729bf8;
+  }
+  .br-theme-bars-movie .br-readonly .br-current-rating {
+    color: #729bf8;
+  }
+  @media print {
+    .br-theme-bars-movie .br-widget a {
+      border: 1px solid #b3b3b3;
+      background: white;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    .br-theme-bars-movie .br-widget a.br-active,
+    .br-theme-bars-movie .br-widget a.br-selected {
+      border: 1px solid black;
+      background: white;
+    }
+    .br-theme-bars-movie .br-widget .br-current-rating {
+      color: black;
+    }
+  }
+  
  .bootstrap-touchspin .input-group-btn-vertical {
     position: relative;
     white-space: nowrap;
