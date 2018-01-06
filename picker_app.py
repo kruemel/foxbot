@@ -1,3 +1,4 @@
+from random import shuffle
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import ARRAY
@@ -43,10 +44,6 @@ class GameQuery(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/showgames')
-def displaygames():
-    return render_template('showgames.html')
-
 @app.route('/process', methods=['GET', 'POST'])
 def process():
     playnum = request.form['playnum']
@@ -54,7 +51,7 @@ def process():
     weight = request.form['rating']
     mechanics = request.form.getlist('mechCheck')
     if (playnum and playtime and weight):
-        return redirect(url_for('showgames', playnum=playnum, 
+        return redirect(url_for('showgames', playnum=playnum,
             playtime=playtime, weight=weight, mech=mechanics))
     return("Ooops.. you didn't fill out all the questions..")
 
@@ -63,14 +60,14 @@ def showgames(playnum, playtime, weight, mech):
     clamp = lambda n: max(min(5, n), 0)
     min_weight = clamp(int(weight) - 0.5)
     max_weight = clamp(int(weight) + 0.5)
-    gamelist = Game.query.filter(Game.maxplayers > playnum, playnum == Game.best_playnum.any_(),
-                                    Game.max_playing_time <= playtime,
-                                    Game.average_weight.between(min_weight, max_weight)).all()
-    found = []
-    for g in gamelist:
-        found.append(g.name_col)
+    games = Game.query.filter(Game.maxplayers > playnum, playnum == Game.best_playnum.any_(),
+                              Game.max_playing_time <= playtime,
+                              Game.average_weight.between(min_weight, max_weight)).all()
+    shuffle(games)
+    # games = games[0:3]
 
-    return "Found games: {}".format(found)
+    return render_template('showgames.html', games=games, n=range(len(games)))
+    # return "Found games: {}".format(found)
     # return('Playnum: {}<br><br>Playtime: {} <br><br>Weight: {}'
         #    '<br><br>Mechanics: {}'.format(playnum, playtime, weight, mech)
 
