@@ -1,3 +1,22 @@
+
+    .fa-chevron-left {
+        color: #6F1F7E;
+        margin-right: 200px;
+    }
+
+    .fa-chevron-right {
+        color: #6F1F7E;
+        margin-left: 200px;
+    }
+
+    .card {
+        text-align: justify;
+    }
+
+    .container-fluid {
+        background: rgba(255, 255, 0, 0.522);
+    }
+
 @media (min-width: 768px) {
 
     /* show 3 items */
@@ -65,11 +84,17 @@
         height: 300px !important;
     }
 
+    .img-fluid  {
+        object-fit: cover !important;
+        height: 300px !important;
+        width: 300px !important;
+        object-position: 50% 0%;
+    }
 }
 
   @media (max-width: 768px) {
     .carousel-inner {
       width: 100%;
-      height: 300px !important;
+      height: 200px !important;
   }
 }

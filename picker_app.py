@@ -2,15 +2,15 @@ from random import shuffle
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import ARRAY
-from flask_wtf import Form 
+from sqlalchemy import or_
 
 app = Flask(__name__)
 
 # on linux:
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kathrin@dlocalhost/gamepicker'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kathrin@localhost/gamepicker'
 
 # on windows:
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kathrin:password@localhost:5433/gamepicker'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kathrin:password@localhost:5433/gamepicker'
 db = SQLAlchemy(app)
 
 # db Models
@@ -38,7 +38,16 @@ class GameQuery(db.Model):
     max_playtime = db.Column(db.Integer)
     weight = db.Column(db.Integer)
 
-# class GameQueryForm(Form):
+def map_mechanic(arg):
+    mapper = {
+        'coop': 'Co-operative Play',
+        'cardDraft': 'Card Drafting',
+        'tilePlace': 'Tile Placement',
+        'areaControl': 'Area Control / Area Influence',
+        'deckBuild': 'Deck / Pool Building',
+        'workerPlace': 'Worker Placement',
+    }
+    return mapper.get(arg, None)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -48,25 +57,48 @@ def index():
 def process():
     playnum = request.form['playnum']
     playtime = request.form['playtime']
-    weight = request.form['rating']
+    weight = int(request.form['rating'])
     mechanics = request.form.getlist('mechCheck')
-    if (playnum and playtime and weight):
-        return redirect(url_for('showgames', playnum=playnum,
-            playtime=playtime, weight=weight, mech=mechanics))
+    if (playnum and playtime):
+        gamequery = Game.query.filter(Game.maxplayers >= playnum, playnum == Game.best_playnum.any_(),
+                                        Game.max_playing_time <= playtime)
+        if weight:
+            clamp = lambda n: max(min(5, n), 0)
+            min_weight = clamp(weight - 0.5)
+            max_weight = clamp(weight + 0.5)
+            gamequery = gamequery.filter(Game.average_weight.between(min_weight, max_weight))
+
+        mlist = []
+        for m in mechanics:
+            mlist.append(map_mechanic(m))
+        
+        if mlist:
+            gamequery = gamequery.filter(or_(Game.mechanics.any_() == m for m in mlist))
+        
+        gamequery = gamequery.order_by(Game.bgg_rank)
+        games = gamequery.all()
+
+        return render_template('showgames.html', games=games, n=range(len(games)))
     return("Ooops.. you didn't fill out all the questions..")
 
-@app.route('/foundgames/<playnum>/<playtime>/<weight>/<mech>')
-def showgames(playnum, playtime, weight, mech):
-    clamp = lambda n: max(min(5, n), 0)
-    min_weight = clamp(int(weight) - 0.5)
-    max_weight = clamp(int(weight) + 0.5)
-    games = Game.query.filter(Game.maxplayers > playnum, playnum == Game.best_playnum.any_(),
-                              Game.max_playing_time <= playtime,
-                              Game.average_weight.between(min_weight, max_weight)).all()
-    shuffle(games)
-    # games = games[0:3]
+# @app.route('/foundgames/<playnum>/<playtime>/<weight>/<mech>')
+# def showgames(playnum, playtime, weight, mech):
+#     clamp = lambda n: max(min(5, n), 0)
+#     min_weight = clamp(int(weight) - 0.5)
+#     max_weight = clamp(int(weight) + 0.5)
+#     games = Game.query.filter(Game.maxplayers > playnum, playnum == Game.best_playnum.any_(),
+#                               Game.max_playing_time <= playtime,
+#                               Game.average_weight.between(min_weight, max_weight)).all()
+#     shuffle(games)
+#     mlist = []
+#     for num, m in enumerate(mech):
+#         mlist.append(map_mechanic(m))
+#         print(num)
 
-    return render_template('showgames.html', games=games, n=range(len(games)))
+#     print(mech)
+#     print(mlist)
+    
+#     return render_template('showgames.html', games=games, n=range(len(games)))
     # return "Found games: {}".format(found)
     # return('Playnum: {}<br><br>Playtime: {} <br><br>Weight: {}'
         #    '<br><br>Mechanics: {}'.format(playnum, playtime, weight, mech)

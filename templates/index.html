@@ -8,6 +8,7 @@
   
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css"> -->
   <link href="{{ url_for('static', filename='js/index.css') }}" rel="stylesheet" type="text/css" media="all">
   <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
@@ -74,6 +75,7 @@
         <div class="box-header">How complex should the game be?</div>
         <br>
           <select id="weight" name="rating" autocomplete="off">
+            <option value="0">I don't care</option>
             <option value="1">Light</option>
             <option value="2">Medium Light</option>
             <option value="3" selected="selected">Medium</option>
@@ -98,7 +100,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
       <br><br>
-      You can narrow my suggestions by telling me if I the game should use one of the given game mechanics. <br><br>
+      You can narrow my suggestions by telling me ifmech the game should use one of the given game mechanics. <br><br>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" name="mechCheck" value="coop">
         <label class="form-check-label" for="inlineCheckbox1">Co-operative</label>

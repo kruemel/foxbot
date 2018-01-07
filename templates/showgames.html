@@ -10,8 +10,8 @@
 
     <!-- Latest compiled and minified CSS -->
     <link href="{{ url_for('static', filename='js/carousel.css') }}" rel="stylesheet" type="text/css" media="all">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
-        crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
         crossorigin="anonymous"></script>
@@ -19,8 +19,15 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
+    <div class="container">
   <div id="gameCarousel" class="carousel slide" data-ride="carousel" data-interval="9000">
+    <a class="carousel-control-prev" href="#gameCarousel" role="button" data-slide="prev">
+      <i class="fa fa-chevron-left fa-2x"></i>
+    </a>
+    <a class="carousel-control-next" href="#gameCarousel" role="button" data-slide="next">
+      <i class="fa fa-chevron-right fa-2x"></i>
+    </a>
     <ol class="carousel-indicators">
     {% for i in n %}
       <li data-target="#carouselExampleIndicators" data-slide-to="{{ i }}" {% if loop.first %} class="active" {% endif %}></li>
@@ -29,19 +36,38 @@
     <div class="carousel-inner row w-100 mx-auto">
       {% for game in games %}
       <div class="carousel-item col-md-4 {% if loop.first %}active{% endif%}">
-        <img class="img-fluid mx-auto d-block" src="{{ game.imageurl }}" alt="{{ game.name_col }}">
+        <a data-toggle="collapse"  aria-expanded="false" href=".multi-collapse-{{ game.gid }}" aria-controls="{{ game.gid }}text {{ game.gid }}desc">
+          <img class="img-fluid mx-auto d-block" src="{{ game.imageurl }}" alt="{{ game.name_col }}">
+        </a>
       </div>
       {% endfor %}
     </div>
-    <a class="carousel-control-prev" href="#gameCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#gameCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+  </div>
+  </div>
+  </div>
+  <br><br>
+  <div class="container">
+    {% for game in games %}
+    <div class="row">
+      <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+          <div class="collapse multi-collapse-{{ game.gid }}" id="{{ game.gid }}text">
+            <div class="card card-body">
+              <h5><b>{{ game.name_col }}</b></h5>
+              <br>By: {% for a in game.authors %} {% if not loop.first %}, {% endif %}{{ a }} {% endfor %} 
+              <br>Playing time: {% if game.min_playing_time != game.max_playing_time %}{{ game.min_playing_time }} - {% endif %}{{ game.max_playing_time }} minutes
+              <br>BGG rank: {{ game.bgg_rank }}
+            </div>
+          </div>
+      </div>
+      <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
+        <div class="collapse multi-collapse-{{ game.gid }}" id="{{ game.gid }}desc">
+          <div class="card card-body">
+            {{ game.description }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
   </div>
 </body>
-
 </html>

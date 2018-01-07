@@ -42,7 +42,7 @@ def _suggest_playernum(votes_dict):
     total_votes = int(votes_dict['total_votes'])
     max_players = len(votes_dict['results'].items()) - 1
     if total_votes < MIN_VOTES:
-        result = [list(range(1, max_players)), []]
+        result = [list(range(1, max_players + 1)), []]
         return result
     good_num = []
     bad_num = []
