@@ -53,6 +53,10 @@ def map_mechanic(arg):
 def index():
     return render_template('index.html')
 
+@app.route('/test')
+def testroute():
+    return render_template('test.html')
+
 @app.route('/process', methods=['GET', 'POST'])
 def process():
     playnum = request.form['playnum']

@@ -9,9 +9,11 @@
         crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified CSS -->
-    <link href="{{ url_for('static', filename='js/carousel.css') }}" rel="stylesheet" type="text/css" media="all">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet'  type='text/css'> -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet'  type='text/css'> -->
     <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
+    <link href="{{ url_for('static', filename='js/carousel.css') }}" rel="stylesheet" type="text/css" media="all">
     <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
         crossorigin="anonymous"></script>
@@ -51,7 +53,7 @@
     <div class="row">
       <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
           <div class="collapse multi-collapse-{{ game.gid }}" id="{{ game.gid }}text">
-            <div class="card card-body">
+            <div class="card card-body game-summary">
               <h5><b>{{ game.name_col }}</b></h5>
               <br>By: {% for a in game.authors %} {% if not loop.first %}, {% endif %}{{ a }} {% endfor %} 
               <br>Playing time: {% if game.min_playing_time != game.max_playing_time %}{{ game.min_playing_time }} - {% endif %}{{ game.max_playing_time }} minutes
@@ -61,7 +63,7 @@
       </div>
       <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
         <div class="collapse multi-collapse-{{ game.gid }}" id="{{ game.gid }}desc">
-          <div class="card card-body">
+          <div class="card card-body game-desc">
             {{ game.description }}
           </div>
         </div>

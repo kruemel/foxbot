@@ -7,6 +7,11 @@
  *  Under Apache License v2.0 License
  */
 
+  /* body {
+    font-family: 'Josefin Slab';
+    font-weight: bold;
+  } */
+
 .br-theme-bars-movie .br-widget {
     display: block;
     height: 10px;
@@ -117,12 +122,22 @@
   }
 
   .form-check-label {
-    display: block;
-    width: 8.5em;
+    width: 10em;
+    margin-left: -30px;
+    text-align: left;
   }
 
   .form-check {
     margin-left: 20px;
+    display: inline-block;
+  }
+
+  .form-group {
+    text-align: center;
+  }
+
+  .form-group .form-label {
+    width: 24em;
   }
 
   .btn.btn-primary {

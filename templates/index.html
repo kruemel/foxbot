@@ -8,7 +8,8 @@
   
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css"> -->
+  <!-- <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet'  type='text/css'> -->
+  <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
   <link href="{{ url_for('static', filename='js/index.css') }}" rel="stylesheet" type="text/css" media="all">
   <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
@@ -44,10 +45,9 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-8 col-sm-8 col-md-6 col-lg-4 col-xl-4">
-      <br><br>
       <div class="form-group">
-        <label for="playtime">How much time do you want to spend playing the game?</label>
-        <input id="playtime" type="text" value="30" name="playtime">
+        <label class="form-label" for"playtime">How much time do you want to spend playing the game?</label>
+        <input id="playtime" type="text" value="60" name="playtime">
         <script>
           $("input[name='playtime']").TouchSpin({
             min: 10,
@@ -70,7 +70,6 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4">
-      <br><br>
       <div class="form-group">
         <div class="box-header">How complex should the game be?</div>
         <br>
@@ -91,7 +90,7 @@
         });
         </script>
       </div>
-      <br><br>
+      <br><br><br>
     </div>
   </div>
 </div>
@@ -99,33 +98,34 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
-      <br><br>
-      You can narrow my suggestions by telling me ifmech the game should use one of the given game mechanics. <br><br>
-      <div class="form-check form-check-inline">
+      You can narrow my suggestions by telling me if the game should use one of the given game mechanics. <br><br>
+      <div class="form-group">
+      <div class="form-check">
         <input class="form-check-input" type="checkbox" name="mechCheck" value="coop">
         <label class="form-check-label" for="inlineCheckbox1">Co-operative</label>
       </div>
-      <div class="form-check form-check-inline">
+      <div class="form-check">
         <input class="form-check-input" type="checkbox" name="mechCheck" value="cardDraft">
         <label class="form-check-label" for="inlineCheckbox2">Card drafting</label>
       </div>
-      <div class="form-check form-check-inline">
+      <div class="form-check">
         <input class="form-check-input" type="checkbox" name="mechCheck" value="tilePlace">
         <label class="form-check-label" for="inlineCheckbox3">Tile placement</label>
       </div>
-      <div class="form-check form-check-inline">
+      <div class="form-check">
         <input class="form-check-input" type="checkbox" name="mechCheck" value="areaControl">
         <label class="form-check-label" for="inlineCheckbox2">Area control</label>
       </div>
-      <div class="form-check form-check-inline">
+      <div class="form-check">
         <input class="form-check-input" type="checkbox" name="mechCheck" value="deckBuild">
         <label class="form-check-label" for="inlineCheckbox2">Deck building</label>
       </div>
-      <div class="form-check form-check-inline">
+      <div class="form-check">
         <input class="form-check-input" type="checkbox" id="mechCheck" value="workerPlace">
         <label class="form-check-label" for="inlineCheckbox2">Worker placement</label>
       </div>
-      <br><br><br>
+      </div>
+      <br><br>
     </div>
   </div>
 </div>
